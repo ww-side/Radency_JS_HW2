@@ -47,7 +47,7 @@ const Tbody: FC<TbodyProps> = ({ template }) => {
     return (
       <tbody>
         {Object.values(Category).map((category, index) => (
-          <TbodyRowSummary category={category} index={index} />
+          <TbodyRowSummary key={index} category={category} index={index} />
         ))}
       </tbody>
     );

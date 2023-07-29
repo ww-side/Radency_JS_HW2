@@ -8,7 +8,7 @@ interface ButtonProps {
 
 enum Colors {
   BLACK = 'bg-black hover:bg-zinc-700 text-white',
-  BLUE = 'bg-blue-600 hover:bg-blue-700 text-white',
+  BLUE = 'bg-blue-500 hover:bg-blue-600 text-white',
   WHITE = 'bg-white hover:bg-gray-300 text-black',
 }
 
