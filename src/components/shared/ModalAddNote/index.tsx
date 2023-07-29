@@ -1,9 +1,11 @@
 import React, { ChangeEvent, FC, useState } from 'react';
+import { nanoid } from 'nanoid';
 import CustomModal from '../../common/CustomModal';
 import Button from '../../common/Button';
+import Input from '../../common/Input';
+import Select from '../../common/Select';
 import { useAppDispatch } from '../../../hooks/redux.ts';
 import { tableSlice } from '../../../store/reducers/tableSlice.ts';
-import { nanoid } from 'nanoid';
 import { Category } from '../../../models/category.ts';
 
 interface ModalAddNoteProps {
@@ -54,27 +56,21 @@ const ModalAddNote: FC<ModalAddNoteProps> = ({
 
   return (
     <CustomModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
-      <div className="text-black">
-        <input
+      <div className="flex flex-col gap-2 mb-5">
+        <Input
           type="text"
           value={name}
           placeholder="Name"
           onChange={handleNameChange}
         />
-        <select value={category} onChange={handleCategoryChange}>
-          {Object.values(Category).map(categoryValue => (
-            <option key={categoryValue} value={categoryValue}>
-              {categoryValue}
-            </option>
-          ))}
-        </select>
-        <input
+        <Select value={category} onChange={handleCategoryChange} />
+        <Input
           type="text"
           value={content}
           placeholder="Content"
           onChange={handleContentChange}
         />
-        <input
+        <Input
           type="date"
           value={date}
           placeholder="Dates"

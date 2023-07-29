@@ -1,6 +1,8 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useState, useEffect, ChangeEvent } from 'react';
 import CustomModal from '../../common/CustomModal';
 import Button from '../../common/Button';
+import Select from '../../common/Select';
+import Input from '../../common/Input';
 import { Note } from '../../../models/note.ts';
 import { useAppDispatch } from '../../../hooks/redux.ts';
 import { tableSlice } from '../../../store/reducers/tableSlice.ts';
@@ -32,48 +34,63 @@ const ModalEditNote: FC<ModalEditNoteProps> = ({
   }, [note.dates]);
 
   const handleEditNote = () => {
+    const lastDate = new Date(note.dates[note.dates.length - 1])
+      .toISOString()
+      .split('T')[0];
+    const newDate =
+      dates !== lastDate
+        ? [...note.dates, new Date(dates).toISOString()]
+        : note.dates;
+
     const editedNote = {
       ...note,
       name,
       category,
       content,
-      dates: dates
-        ? [...note.dates, new Date(dates).toISOString()]
-        : note.dates,
+      dates: newDate,
     };
 
     dispatch(editNote(editedNote));
     setIsModalOpen(false);
-    console.log(note.dates);
+  };
+
+  const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value);
+  };
+
+  const handleContentChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setContent(e.target.value);
+  };
+
+  const handleDateChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setDates(e.target.value);
+  };
+
+  const handleCategoryChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    setCategory(e.target.value as Category);
   };
 
   return (
     <CustomModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
-      <div className="text-black">
-        <input
+      <div className="flex flex-col gap-2 mb-5">
+        <Input
           type="text"
           value={name}
-          onChange={e => setName(e.target.value)}
+          placeholder="Name"
+          onChange={handleNameChange}
         />
-        <select
-          value={category}
-          onChange={e => setCategory(e.target.value as Category)}
-        >
-          {Object.values(Category).map((value, index) => (
-            <option key={index} value={value}>
-              {value}
-            </option>
-          ))}
-        </select>
-        <input
+        <Select value={category} onChange={handleCategoryChange} />
+        <Input
           type="text"
           value={content}
-          onChange={e => setContent(e.target.value)}
+          placeholder="Content"
+          onChange={handleContentChange}
         />
-        <input
+        <Input
           type="date"
-          defaultValue={dates}
-          onChange={e => setDates(e.target.value)}
+          value={dates}
+          placeholder="Dates"
+          onChange={handleDateChange}
         />
       </div>
       <Button color="white" onClick={handleEditNote}>
