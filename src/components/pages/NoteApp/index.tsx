@@ -1,10 +1,10 @@
 import { FC, useState } from 'react';
-import NoteTable from '../../components/shared/NoteTable';
-import Button from '../../components/common/Button';
-import Layout from '../../components/common/Layout';
-import ModalAddNote from '../../components/shared/ModalAddNote';
-import SummaryTable from '../../components/shared/SummaryTable';
-import ArchiveTable from '../../components/shared/ArchiveTable';
+import NoteTable from '../../shared/NoteTable';
+import Button from '../../common/Button';
+import Layout from '../../common/Layout';
+import ModalAddNote from '../../shared/ModalAddNote';
+import SummaryTable from '../../shared/SummaryTable';
+import ArchiveTable from '../../shared/ArchiveTable';
 
 const NoteApp: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

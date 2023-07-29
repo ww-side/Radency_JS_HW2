@@ -1,9 +1,10 @@
+import { FC } from 'react';
 import Table from '../../common/Table';
 import Thead from '../../common/Thead';
-import { summaryTitles } from '../../common/Thead/data.ts';
 import Tbody from '../../common/Tbody';
+import { summaryTitles } from '../../common/Thead/data.ts';
 
-const SummaryTable = () => {
+const SummaryTable: FC = () => {
   return (
     <Table>
       <Thead data={summaryTitles} />
