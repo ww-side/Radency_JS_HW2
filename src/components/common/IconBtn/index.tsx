@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-interface IconBtnProps {
+export interface IconBtnProps {
   onClick: () => void;
   icon: React.ReactNode;
 }
