@@ -1,7 +1,7 @@
 import { ChangeEvent, FC } from 'react';
 import { Category } from '../../../models/category.ts';
 
-interface SelectProps {
+export interface SelectProps {
   value: string;
   onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
 }

@@ -1,6 +1,6 @@
 import { FC, ReactNode, MouseEvent } from 'react';
 
-interface ButtonProps {
+export interface ButtonProps {
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
   children: ReactNode;
   color: string;

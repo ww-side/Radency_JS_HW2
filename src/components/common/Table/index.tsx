@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-interface TableProps {
+export interface TableProps {
   children: React.ReactNode;
 }
 

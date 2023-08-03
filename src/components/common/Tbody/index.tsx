@@ -4,7 +4,7 @@ import TbodyRowSummary from './TbodyRowSummary';
 import { useAppSelector } from '../../../hooks/redux.ts';
 import { Category } from '../../../models/category.ts';
 
-interface TbodyProps {
+export interface TbodyProps {
   template: string;
 }
 

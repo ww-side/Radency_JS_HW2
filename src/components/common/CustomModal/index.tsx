@@ -2,9 +2,9 @@ import React, { FC, useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import 'animate.css';
 
-Modal.setAppElement('#root');
+Modal.setAppElement('#storybook-root' || '#root');
 
-interface CustomModalProps {
+export interface CustomModalProps {
   isModalOpen: boolean;
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   children: React.ReactNode;

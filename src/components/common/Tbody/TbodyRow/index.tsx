@@ -9,7 +9,7 @@ import { FiEdit } from 'react-icons/fi';
 import { HiOutlineTrash } from 'react-icons/hi';
 import { BiArchiveIn } from 'react-icons/bi';
 
-interface TableRowProps {
+export interface TableRowProps {
   note: Note;
   editAction: boolean;
   archiveAction: boolean;

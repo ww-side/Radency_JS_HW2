@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { TheadItem } from '../../../models/thead.ts';
 
-interface TheadProps {
+export interface TheadProps {
   data: TheadItem[];
 }
 
